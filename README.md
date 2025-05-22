@@ -7,7 +7,7 @@ React based Speech-to-Text and Text-to-Speech library with multiple engine suppo
 - Multiple STT (Speech-to-Text) engines support:
   - Web Speech API (Browser built-in) ✅
   - Microsoft Azure Speech SDK (Coming soon)
-  - Microsoft Realtime API (Coming soon)
+  - Microsoft Azure Realtime API (Coming soon)
   - Google Cloud STT V2 (Coming soon)
   - Return Zero (Coming soon)
 - Multiple TTS (Text-to-Speech) engines support:
