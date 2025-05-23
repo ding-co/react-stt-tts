@@ -1,10 +1,10 @@
 import { useState, useCallback, useRef, useEffect } from "react";
-import { useTTSConfig } from "../providers/TTSProvider";
 import TTSFactory from "@/services/TTSFactory";
+import { useTTSConfig } from "@/providers/VoiceProvider";
 import type { TTSEngine, TTSHookResult, TTSResult } from "@/types/tts";
 
 export const useTTS = (): TTSHookResult => {
-  const { config } = useTTSConfig();
+  const config = useTTSConfig();
 
   const [isSpeaking, setSpeaking] = useState(false);
   const [error, setError] = useState<Error | null>(null);

@@ -34,9 +34,9 @@ pnpm add react-stt-tts
 ### Basic Usage with Web Speech API
 
 ```tsx
-import { STTProvider, TTSProvider, useSTT, useTTS } from "react-stt-tts";
+import { VoiceProvider, useSTT, useTTS } from "react-stt-tts";
 
-// STT Configuration (Speech Recognition)
+// STT Configuration
 const sttConfig = {
   model: "web-speech",
   language: "ko-KR", // Korean
@@ -44,7 +44,7 @@ const sttConfig = {
   interimResults: true, // Show interim results
 };
 
-// TTS Configuration (Speech Synthesis)
+// TTS Configuration
 const ttsConfig = {
   model: "web-synthesis",
   language: "ko-KR", // Korean
@@ -55,11 +55,9 @@ const ttsConfig = {
 
 function App() {
   return (
-    <STTProvider config={sttConfig}>
-      <TTSProvider config={ttsConfig}>
-        <YourComponent />
-      </TTSProvider>
-    </STTProvider>
+    <VoiceProvider sttConfig={sttConfig} ttsConfig={ttsConfig}>
+      <YourComponent />
+    </VoiceProvider>
   );
 }
 
@@ -94,19 +92,13 @@ function YourComponent() {
 
 ## API Reference
 
-### STTProvider Props
+### VoiceProvider Props
 
-| Prop     | Type      | Description              |
-| -------- | --------- | ------------------------ |
-| config   | STTConfig | STT engine configuration |
-| children | ReactNode | React child components   |
-
-### TTSProvider Props
-
-| Prop     | Type      | Description              |
-| -------- | --------- | ------------------------ |
-| config   | TTSConfig | TTS engine configuration |
-| children | ReactNode | React child components   |
+| Prop      | Type      | Description              |
+| --------- | --------- | ------------------------ |
+| sttConfig | STTConfig | STT engine configuration |
+| ttsConfig | TTSConfig | TTS engine configuration |
+| children  | ReactNode | React child components   |
 
 ### useSTT Hook
 

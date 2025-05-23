@@ -1,10 +1,10 @@
 import { useState, useCallback, useRef, useEffect } from "react";
-import { useSTTConfig } from "../providers/STTProvider";
 import STTFactory from "@/services/STTFactory";
+import { useSTTConfig } from "@/providers/VoiceProvider";
 import type { STTEngine, STTHookResult, STTResult } from "@/types/stt";
 
 export const useSTT = (): STTHookResult => {
-  const { config } = useSTTConfig();
+  const config = useSTTConfig();
 
   const [result, setResult] = useState<STTResult | null>(null);
   const [isListening, setListening] = useState(false);
