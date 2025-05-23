@@ -1,30 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useSTTConfig } from "../providers/STTProvider";
-import {
-  STTWebSpeechEngine,
-  STTAzureSpeechSDKEngine,
-  STTAzureRealtimeAPIEngine,
-  STTGoogleCloudEngine,
-  STTReturnZeroEngine,
-} from "@/engines/stt";
-import type { STTConfig, STTEngine, STTHookResult, STTModel, STTResult } from "@/types/stt";
-
-const getEngine = (model: STTModel, config: STTConfig): STTEngine => {
-  switch (model) {
-    case "web-speech":
-      return new STTWebSpeechEngine(config);
-    case "azure-speech-sdk":
-      return new STTAzureSpeechSDKEngine(config);
-    case "azure-realtime-api":
-      return new STTAzureRealtimeAPIEngine(config);
-    case "google-cloud":
-      return new STTGoogleCloudEngine(config);
-    case "return-zero":
-      return new STTReturnZeroEngine(config);
-    default:
-      throw new Error("Not supported STT model.");
-  }
-};
+import STTFactory from "@/services/STTFactory";
+import type { STTEngine, STTHookResult, STTResult } from "@/types/stt";
 
 export const useSTT = (): STTHookResult => {
   const { config } = useSTTConfig();
@@ -45,7 +22,7 @@ export const useSTT = (): STTHookResult => {
   }, []);
 
   useEffect(() => {
-    engineRef.current = getEngine(config.model, config);
+    engineRef.current = STTFactory.create(config.model, config);
     engineRef.current.onResult(setResult);
     engineRef.current.onError(setError);
   }, [config.model, config]);

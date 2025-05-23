@@ -1,27 +1,7 @@
 import { useState, useCallback, useRef, useEffect } from "react";
 import { useTTSConfig } from "../providers/TTSProvider";
-import {
-  TTSWebSynthesisEngine,
-  TTSAzureSpeechSDKEngine,
-  TTSGoogleCloudEngine,
-  TTSNaverClovaEngine,
-} from "@/engines/tts";
-import type { TTSConfig, TTSEngine, TTSHookResult, TTSModel, TTSResult } from "@/types/tts";
-
-const getEngine = (model: TTSModel, config: TTSConfig): TTSEngine => {
-  switch (model) {
-    case "web-synthesis":
-      return new TTSWebSynthesisEngine(config);
-    case "azure-speech-sdk":
-      return new TTSAzureSpeechSDKEngine(config);
-    case "google-cloud":
-      return new TTSGoogleCloudEngine(config);
-    case "naver-clova":
-      return new TTSNaverClovaEngine(config);
-    default:
-      throw new Error("Not supported TTS model.");
-  }
-};
+import TTSFactory from "@/services/TTSFactory";
+import type { TTSEngine, TTSHookResult, TTSResult } from "@/types/tts";
 
 export const useTTS = (): TTSHookResult => {
   const { config } = useTTSConfig();
@@ -31,7 +11,7 @@ export const useTTS = (): TTSHookResult => {
   const engineRef = useRef<TTSEngine | null>(null);
 
   useEffect(() => {
-    engineRef.current = getEngine(config.model, config);
+    engineRef.current = TTSFactory.create(config.model, config);
     engineRef.current.onError(setError);
   }, [config.model, config]);
 
