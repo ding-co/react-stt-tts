@@ -1,6 +1,6 @@
 import { useState, useCallback, useRef, useEffect } from "react";
-import TTSFactory from "@/services/TTSFactory";
 import { useTTSConfig } from "@/providers/VoiceProvider";
+import TTSFactory from "@/services/TTSFactory";
 import type { TTSEngine, TTSHookResult, TTSResult } from "@/types/tts";
 
 export const useTTS = (): TTSHookResult => {
