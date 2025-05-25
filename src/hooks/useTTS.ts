@@ -4,16 +4,16 @@ import TTSFactory from "@/services/TTSFactory";
 import type { TTSEngine, TTSHookResult, TTSResult } from "@/types/tts";
 
 export const useTTS = (): TTSHookResult => {
-  const config = useTTSConfig();
+  const { ttsConfig } = useTTSConfig();
 
   const [isSpeaking, setSpeaking] = useState(false);
   const [error, setError] = useState<Error | null>(null);
   const engineRef = useRef<TTSEngine | null>(null);
 
   useEffect(() => {
-    engineRef.current = TTSFactory.create(config.model, config);
+    engineRef.current = TTSFactory.create(ttsConfig.model, ttsConfig);
     engineRef.current.onError(setError);
-  }, [config.model, config]);
+  }, [ttsConfig.model, ttsConfig]);
 
   const speak = useCallback(async (text: string): Promise<TTSResult> => {
     setSpeaking(true);

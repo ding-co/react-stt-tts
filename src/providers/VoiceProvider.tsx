@@ -1,10 +1,12 @@
-import { createContext, useContext, type ReactNode } from "react";
+import { createContext, useContext, useState, type ReactNode } from "react";
 import type { STTConfig } from "@/types/stt";
 import type { TTSConfig } from "@/types/tts";
 
 interface VoiceContextType {
   sttConfig: STTConfig | null;
   ttsConfig: TTSConfig | null;
+  setSTTConfig: (config: STTConfig | null) => void;
+  setTTSConfig: (config: TTSConfig | null) => void;
 }
 
 const VoiceContext = createContext<VoiceContextType | null>(null);
@@ -15,13 +17,26 @@ interface VoiceProviderProps {
   children: ReactNode;
 }
 
-export const VoiceProvider = ({ sttConfig, ttsConfig, children }: VoiceProviderProps) => {
-  const value = {
-    sttConfig: sttConfig ?? null,
-    ttsConfig: ttsConfig ?? null,
-  };
+export const VoiceProvider = ({
+  sttConfig: initialSTTConfig,
+  ttsConfig: initialTTSConfig,
+  children,
+}: VoiceProviderProps) => {
+  const [sttConfig, setSTTConfig] = useState<STTConfig | null>(initialSTTConfig ?? null);
+  const [ttsConfig, setTTSConfig] = useState<TTSConfig | null>(initialTTSConfig ?? null);
 
-  return <VoiceContext.Provider value={value}>{children}</VoiceContext.Provider>;
+  return (
+    <VoiceContext.Provider
+      value={{
+        sttConfig,
+        ttsConfig,
+        setSTTConfig,
+        setTTSConfig,
+      }}
+    >
+      {children}
+    </VoiceContext.Provider>
+  );
 };
 
 export const useVoiceConfig = () => {
@@ -35,21 +50,25 @@ export const useVoiceConfig = () => {
 };
 
 export const useSTTConfig = () => {
-  const { sttConfig } = useVoiceConfig();
+  const { sttConfig, setSTTConfig } = useVoiceConfig();
 
-  if (!sttConfig) {
-    throw new Error("STT config is not provided. Make sure to pass sttConfig to VoiceProvider.");
+  if (!sttConfig || !setSTTConfig) {
+    throw new Error(
+      "STT config or setter is not provided. Make sure to pass sttConfig to VoiceProvider.",
+    );
   }
 
-  return sttConfig;
+  return { sttConfig, setSTTConfig };
 };
 
 export const useTTSConfig = () => {
-  const { ttsConfig } = useVoiceConfig();
+  const { ttsConfig, setTTSConfig } = useVoiceConfig();
 
-  if (!ttsConfig) {
-    throw new Error("TTS config is not provided. Make sure to pass ttsConfig to VoiceProvider.");
+  if (!ttsConfig || !setTTSConfig) {
+    throw new Error(
+      "TTS config or setter is not provided. Make sure to pass ttsConfig to VoiceProvider.",
+    );
   }
 
-  return ttsConfig;
+  return { ttsConfig, setTTSConfig };
 };

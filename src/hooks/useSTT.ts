@@ -4,7 +4,7 @@ import STTFactory from "@/services/STTFactory";
 import type { STTEngine, STTHookResult, STTResult } from "@/types/stt";
 
 export const useSTT = (): STTHookResult => {
-  const config = useSTTConfig();
+  const { sttConfig } = useSTTConfig();
 
   const [result, setResult] = useState<STTResult | null>(null);
   const [isListening, setListening] = useState(false);
@@ -22,10 +22,10 @@ export const useSTT = (): STTHookResult => {
   }, []);
 
   useEffect(() => {
-    engineRef.current = STTFactory.create(config.model, config);
+    engineRef.current = STTFactory.create(sttConfig.model, sttConfig);
     engineRef.current.onResult(setResult);
     engineRef.current.onError(setError);
-  }, [config.model, config]);
+  }, [sttConfig.model, sttConfig]);
 
   return {
     start,
