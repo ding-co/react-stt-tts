@@ -94,11 +94,40 @@ function YourComponent() {
 
 ### VoiceProvider Props
 
-| Prop      | Type      | Description              |
-| --------- | --------- | ------------------------ |
-| sttConfig | STTConfig | STT engine configuration |
-| ttsConfig | TTSConfig | TTS engine configuration |
-| children  | ReactNode | React child components   |
+| Prop      | Type      | Description                      |
+| --------- | --------- | -------------------------------- |
+| sttConfig | STTConfig | STT initial engine configuration |
+| ttsConfig | TTSConfig | TTS initial engine configuration |
+| children  | ReactNode | React child components           |
+
+### useVoiceConfig Hook
+
+```typescript
+const {
+  sttConfig, // Current STT configuration
+  ttsConfig, // Current TTS configuration
+  setSTTConfig, // Function to update STT configuration
+  setTTSConfig, // Function to update TTS configuration
+} = useVoiceConfig();
+```
+
+### useSTTConfig Hook
+
+```typescript
+const {
+  sttConfig, // Current STT configuration
+  setSTTConfig, // Function to update STT configuration
+} = useSTTConfig();
+```
+
+### useTTSConfig Hook
+
+```typescript
+const {
+  ttsConfig, // Current TTS configuration
+  setTTSConfig, // Function to update TTS configuration
+} = useTTSConfig();
+```
 
 ### useSTT Hook
 
