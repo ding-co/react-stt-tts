@@ -9,7 +9,7 @@ import type { TTSConfig, TTSEngine, TTSModel } from "@/types/tts";
 export default class TTSFactory {
   static create(model: TTSModel, config: TTSConfig): TTSEngine {
     switch (model) {
-      case "web-synthesis":
+      case "web-speech-synthesis":
         return new TTSWebSpeechEngine(config);
       case "azure-speech-sdk":
         return new TTSAzureSpeechSDKEngine(config);

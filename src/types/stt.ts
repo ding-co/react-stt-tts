@@ -1,5 +1,5 @@
 export type STTModel =
-  | "web-speech"
+  | "web-speech-recognition"
   | "azure-speech-sdk"
   | "azure-realtime-api"
   | "google-cloud"

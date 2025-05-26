@@ -10,7 +10,7 @@ import type { STTConfig, STTEngine, STTModel } from "@/types/stt";
 export default class STTFactory {
   static create(model: STTModel, config: STTConfig): STTEngine {
     switch (model) {
-      case "web-speech":
+      case "web-speech-recognition":
         return new STTWebSpeechEngine(config);
       case "azure-speech-sdk":
         return new STTAzureSpeechSDKEngine(config);
