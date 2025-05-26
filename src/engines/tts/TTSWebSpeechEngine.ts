@@ -1,6 +1,6 @@
 import type { TTSEngine, TTSResult, TTSConfig } from "@/types/tts";
 
-export default class TTSWebSynthesisEngine implements TTSEngine {
+export default class TTSWebSpeechEngine implements TTSEngine {
   private errorCallback: ((err: Error) => void) | null = null;
   private config: TTSConfig;
 

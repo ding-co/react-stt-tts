@@ -1,5 +1,5 @@
 import {
-  TTSWebSynthesisEngine,
+  TTSWebSpeechEngine,
   TTSAzureSpeechSDKEngine,
   TTSGoogleCloudEngine,
   TTSNaverClovaEngine,
@@ -10,7 +10,7 @@ export default class TTSFactory {
   static create(model: TTSModel, config: TTSConfig): TTSEngine {
     switch (model) {
       case "web-synthesis":
-        return new TTSWebSynthesisEngine(config);
+        return new TTSWebSpeechEngine(config);
       case "azure-speech-sdk":
         return new TTSAzureSpeechSDKEngine(config);
       case "google-cloud":
