@@ -29,7 +29,7 @@ yarn add react-stt-tts
 pnpm add react-stt-tts
 ```
 
-## Demo - [StackBlitz](https://stackblitz.com/edit/vitejs-vite-luuiqllo?file=src%2Fmain.tsx)
+## Samples - [StackBlitz](https://stackblitz.com/edit/vitejs-vite-luuiqllo?file=src%2FApp.tsx)
 
 ## Usage
 
