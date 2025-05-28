@@ -1,6 +1,6 @@
 {
   "name": "react-stt-tts",
-  "version": "0.2.52",
+  "version": "0.2.53",
   "description": "React Speech-to-Text and Text-to-Speech library with multiple engine support",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
