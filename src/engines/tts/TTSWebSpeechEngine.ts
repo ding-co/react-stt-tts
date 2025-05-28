@@ -1,9 +1,8 @@
 import type { TTSEngine, TTSResult, TTSConfig } from "@/types/tts";
 
 export default class TTSWebSpeechEngine implements TTSEngine {
-  private errorCallback: ((err: Error) => void) | null = null;
   private config: TTSConfig;
-
+  private errorCallback: ((err: Error) => void) | null = null;
   constructor(config: TTSConfig) {
     this.config = config;
   }

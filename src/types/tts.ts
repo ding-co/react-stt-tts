@@ -1,4 +1,4 @@
-export type TTSModel = "web-speech-synthesis" | "azure-speech-sdk" | "google-cloud" | "naver-clova";
+export type TTSModel = "web-speech" | "google-cloud" | "naver-clova";
 
 export interface TTSConfig {
   model: TTSModel;

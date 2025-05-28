@@ -1,8 +1,7 @@
 import {
   STTWebSpeechEngine,
   STTAzureSpeechSDKEngine,
-  STTAzureRealtimeAPIEngine,
-  STTGoogleCloudEngine,
+  STTGoogleCloudV2Engine,
   STTReturnZeroEngine,
 } from "@/engines/stt";
 import type { STTConfig, STTEngine, STTModel } from "@/types/stt";
@@ -10,14 +9,12 @@ import type { STTConfig, STTEngine, STTModel } from "@/types/stt";
 export default class STTFactory {
   static create(model: STTModel, config: STTConfig): STTEngine {
     switch (model) {
-      case "web-speech-recognition":
+      case "web-speech":
         return new STTWebSpeechEngine(config);
       case "azure-speech-sdk":
         return new STTAzureSpeechSDKEngine(config);
-      case "azure-realtime-api":
-        return new STTAzureRealtimeAPIEngine(config);
-      case "google-cloud":
-        return new STTGoogleCloudEngine(config);
+      case "google-cloud-v2":
+        return new STTGoogleCloudV2Engine(config);
       case "return-zero":
         return new STTReturnZeroEngine(config);
       default:

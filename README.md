@@ -6,14 +6,12 @@ React based Speech-to-Text and Text-to-Speech library with multiple engine suppo
 
 - Multiple STT (Speech-to-Text) engines support:
   - Web Speech API - Speech Recognition (Browser built-in) ✅
-  - Microsoft Azure Speech SDK (Coming soon)
-  - Microsoft Azure Realtime API (Coming soon)
-  - Google Cloud STT (Coming soon)
+  - Azure Speech SDK (Coming soon)
+  - Google Cloud V2 (Coming soon)
   - Return Zero (Coming soon)
 - Multiple TTS (Text-to-Speech) engines support:
   - Web Speech API - Speech Synthesis (Browser built-in) ✅
-  - Microsoft Azure Speech SDK (Coming soon)
-  - Google Cloud TTS (Coming soon)
+  - Google Cloud (Coming soon)
   - Naver Clova (Coming soon)
 - React hooks for easy integration
 - TypeScript support

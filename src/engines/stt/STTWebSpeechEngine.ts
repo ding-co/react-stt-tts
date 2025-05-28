@@ -1,21 +1,13 @@
 import type { STTEngine, STTResult, STTConfig } from "@/types/stt";
 
 export default class STTWebSpeechEngine implements STTEngine {
+  private config: STTConfig;
   private recognition: SpeechRecognition | null = null;
   private resultCallback: ((result: STTResult) => void) | null = null;
   private errorCallback: ((err: Error) => void) | null = null;
-  private config: STTConfig;
 
   constructor(config: STTConfig) {
     this.config = config;
-  }
-
-  onResult(cb: (result: STTResult) => void) {
-    this.resultCallback = cb;
-  }
-
-  onError(cb: (err: Error) => void) {
-    this.errorCallback = cb;
   }
 
   async start() {
@@ -57,5 +49,13 @@ export default class STTWebSpeechEngine implements STTEngine {
 
   async stop() {
     this.recognition?.stop();
+  }
+
+  onResult(cb: (result: STTResult) => void) {
+    this.resultCallback = cb;
+  }
+
+  onError(cb: (err: Error) => void) {
+    this.errorCallback = cb;
   }
 }

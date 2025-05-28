@@ -2,9 +2,8 @@ import type { TTSEngine, TTSResult, TTSConfig } from "@/types/tts";
 
 // TODO: Not implemented yet (Coming soon)
 export default class TTSNaverClovaEngine implements TTSEngine {
-  private errorCallback: ((err: Error) => void) | null = null;
   private config: TTSConfig;
-
+  private errorCallback: ((err: Error) => void) | null = null;
   constructor(config: TTSConfig) {
     this.config = config;
   }

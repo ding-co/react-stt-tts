@@ -1,9 +1,4 @@
-export type STTModel =
-  | "web-speech-recognition"
-  | "azure-speech-sdk"
-  | "azure-realtime-api"
-  | "google-cloud"
-  | "return-zero";
+export type STTModel = "web-speech" | "azure-speech-sdk" | "google-cloud-v2" | "return-zero";
 
 export interface STTConfig {
   model: STTModel;
