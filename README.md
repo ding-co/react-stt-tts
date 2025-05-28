@@ -38,7 +38,7 @@ import { VoiceProvider, useSTT, useTTS } from "react-stt-tts";
 
 // STT Configuration
 const sttConfig = {
-  model: "web-speech-recognition",
+  model: "web-speech",
   language: "ko-KR", // Korean
   continuous: true, // Continuous recognition
   interimResults: true, // Show interim results
@@ -46,7 +46,7 @@ const sttConfig = {
 
 // TTS Configuration
 const ttsConfig = {
-  model: "web-speech-synthesis",
+  model: "web-speech",
   language: "ko-KR", // Korean
   rate: 1, // Speaking rate
   pitch: 1, // Pitch
